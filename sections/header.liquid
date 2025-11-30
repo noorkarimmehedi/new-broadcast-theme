@@ -700,6 +700,22 @@
     padding-bottom: 0 !important;
   }
   
+  /* CRITICAL: Remove section-padding from all header sections */
+  .header-sections .section-padding,
+  .header-sections [class*="section-padding"],
+  .header-sections .announcement__wrapper.section-padding {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Remove padding from announcement bar in header */
+  .header-sections .announcement__wrapper,
+  .header-sections .announcement__bar-outer,
+  .header-sections #announcement {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
   /* Ensure no spacing between header and content */
   .header-sections + *,
   .header__wrapper + *,
@@ -780,6 +796,39 @@
   
   /* Fix header sections wrapper */
   .header-sections {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* CRITICAL FIX: Override section-padding for all sections in header group */
+  .header-sections section,
+  .header-sections [data-section-type],
+  .header-sections .section-padding,
+  .header-sections *[class*="section-padding"] {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    --padding-bottom: 0 !important;
+    --PB: 0 !important;
+  }
+  
+  /* Remove padding from announcement specifically */
+  .header-sections .announcement__wrapper,
+  .header-sections .announcement__wrapper.section-padding,
+  .header-sections #announcement {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    --padding-top: 0 !important;
+    --padding-bottom: 0 !important;
+    --PT: 0 !important;
+    --PB: 0 !important;
+  }
+  
+  /* Remove padding from all announcement child elements */
+  .header-sections .announcement__bar-outer,
+  .header-sections .announcement__bar,
+  .header-sections .announcement__bar-holder {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
