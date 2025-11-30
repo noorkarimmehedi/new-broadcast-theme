@@ -561,10 +561,11 @@
      FIX HEADER WHITE SPACE - TARGET INTERNAL ELEMENTS
      ===================================================== */
   
-  /* Reset header wrapper */
-  .header__wrapper {
-    position: relative;
-    z-index: 100000;
+  /* CRITICAL: Override theme.css - must come after theme.css loads */
+  .header__wrapper,
+  .header__wrapper.header__wrapper {
+    position: relative !important;
+    z-index: 100000 !important;
     height: fit-content !important;
     min-height: fit-content !important;
     max-height: none !important;
@@ -589,10 +590,12 @@
     padding-bottom: 0 !important;
   }
   
-  /* Reset theme header - CRITICAL FIX */
-  .header__wrapper .theme__header {
+  /* Reset theme header - CRITICAL FIX - Override absolute positioning */
+  .header__wrapper .theme__header,
+  .header__wrapper .theme__header.theme__header,
+  .theme__header[data-header-height] {
     position: relative !important;
-    background: var(--COLOR-BG);
+    background: var(--COLOR-BG) !important;
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
@@ -601,6 +604,7 @@
     padding-top: 0 !important;
     margin-top: 0 !important;
     line-height: normal !important;
+    width: 100% !important;
   }
   
   /* CRITICAL: Remove any pseudo-elements that might add space */
@@ -779,7 +783,8 @@
   
   /* Fix header backfill - CRITICAL */
   /* Since header is now relative, backfill should match header height exactly */
-  .header__backfill {
+  .header__backfill,
+  .header__backfill[data-header-backfill] {
     margin: 0 !important;
     padding: 0 !important;
     height: var(--menu-height) !important;
@@ -791,6 +796,13 @@
     position: relative !important;
     box-sizing: border-box !important;
     font-size: 0 !important;
+    vertical-align: top !important;
+  }
+  
+  /* Ensure backfill doesn't add extra space below header */
+  .header__wrapper ~ .header__backfill {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
   
   /* Ensure backfill doesn't create extra space */
@@ -1256,6 +1268,62 @@
     }
   }
 </style>
+
+<script>
+  // CRITICAL: Apply header spacing fix after page loads to ensure it overrides theme.css
+  (function() {
+    function fixHeaderSpacing() {
+      const headerWrapper = document.querySelector('.header__wrapper');
+      const themeHeader = document.querySelector('.theme__header');
+      const headerBackfill = document.querySelector('.header__backfill');
+      
+      if (headerWrapper) {
+        headerWrapper.style.setProperty('margin-bottom', '0', 'important');
+        headerWrapper.style.setProperty('padding-bottom', '0', 'important');
+        headerWrapper.style.setProperty('height', 'fit-content', 'important');
+        headerWrapper.style.setProperty('min-height', 'fit-content', 'important');
+      }
+      
+      if (themeHeader) {
+        themeHeader.style.setProperty('position', 'relative', 'important');
+        themeHeader.style.setProperty('margin-bottom', '0', 'important');
+        themeHeader.style.setProperty('padding-bottom', '0', 'important');
+        themeHeader.style.setProperty('height', 'auto', 'important');
+        themeHeader.style.setProperty('min-height', '0', 'important');
+      }
+      
+      if (headerBackfill) {
+        headerBackfill.style.setProperty('margin-bottom', '0', 'important');
+        headerBackfill.style.setProperty('padding-bottom', '0', 'important');
+        headerBackfill.style.setProperty('margin-top', '0', 'important');
+        headerBackfill.style.setProperty('padding-top', '0', 'important');
+      }
+      
+      // Fix all header sections
+      const headerSections = document.querySelectorAll('.header-sections > *');
+      headerSections.forEach(function(section) {
+        section.style.setProperty('margin-bottom', '0', 'important');
+        section.style.setProperty('padding-bottom', '0', 'important');
+      });
+    }
+    
+    // Run immediately
+    fixHeaderSpacing();
+    
+    // Run after DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fixHeaderSpacing);
+    } else {
+      fixHeaderSpacing();
+    }
+    
+    // Run after window loads
+    window.addEventListener('load', fixHeaderSpacing);
+    
+    // Run after a short delay to ensure all CSS has loaded
+    setTimeout(fixHeaderSpacing, 100);
+  })();
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
