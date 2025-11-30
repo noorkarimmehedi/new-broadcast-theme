@@ -570,17 +570,45 @@
     max-height: none !important;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
     overflow: visible !important;
+    display: block !important;
   }
   
-  /* Reset theme header */
+  /* Ensure header wrapper height matches content exactly */
+  .header__wrapper {
+    height: fit-content !important;
+    min-height: fit-content !important;
+  }
+  
+  /* Remove any spacing from data attributes */
+  [data-header-height],
+  [data-header-wrapper] {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* Reset theme header - CRITICAL FIX */
   .header__wrapper .theme__header {
-    position: relative;
+    position: relative !important;
     background: var(--COLOR-BG);
     height: auto !important;
     min-height: 0 !important;
+    max-height: none !important;
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Remove any pseudo-elements that might add space */
+  .header__wrapper .theme__header::before,
+  .header__wrapper .theme__header::after {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   /* Fix mobile header */
@@ -674,25 +702,80 @@
   
   /* Ensure no spacing between header and content */
   .header-sections + *,
-  .header__wrapper + * {
+  .header__wrapper + *,
+  .header__backfill + * {
     margin-top: 0 !important;
+    padding-top: 0 !important;
   }
   
-  /* Fix header backfill */
+  /* Remove any bottom spacing from header group */
+  .header-sections:last-child,
+  .header__wrapper:last-child,
+  .header__backfill:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* Ensure container doesn't add space */
+  .container > .header-sections {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* Fix header backfill - CRITICAL */
+  /* Since header is now relative, backfill should not add extra space */
   .header__backfill {
     margin: 0 !important;
     padding: 0 !important;
     height: var(--menu-height) !important;
     max-height: var(--menu-height) !important;
+    min-height: var(--menu-height) !important;
+    line-height: 0 !important;
+    display: block !important;
+    overflow: hidden !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Ensure backfill doesn't create extra space */
+  .header__backfill::before,
+  .header__backfill::after {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    content: none !important;
+  }
+  
+  /* If header is relative, backfill should match exactly without extra space */
+  .header__wrapper + .header__backfill {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
   
   /* Fix all header child elements */
   .header__wrapper > *,
   .header__wrapper .theme__header > *,
   .header__wrapper .header__mobile > *,
-  .header__wrapper .header__desktop > * {
+  .header__wrapper .header__desktop > *,
+  .header__wrapper .header__desktop__upper > *,
+  .header__wrapper .header__desktop__lower > *,
+  .header__wrapper .header__desktop__bar__l,
+  .header__wrapper .header__desktop__bar__c,
+  .header__wrapper .header__desktop__bar__r {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
+  }
+  
+  /* Fix all nested elements */
+  .header__wrapper * {
+    box-sizing: border-box;
+  }
+  
+  /* Remove any line-height that might add space */
+  .header__wrapper,
+  .header__wrapper .theme__header {
+    line-height: normal !important;
   }
   
   /* Fix header sections wrapper */
@@ -702,7 +785,23 @@
   }
   
   /* Ensure no extra spacing after header */
-  .header__wrapper::after {
+  .header__wrapper::after,
+  .header__wrapper::before {
+    content: none !important;
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Fix container spacing */
+  .container .header-sections {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* Ensure header sections don't add space */
+  .header-sections::after {
     content: none !important;
     display: none !important;
     height: 0 !important;
