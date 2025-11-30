@@ -5,11 +5,11 @@
 
 .mobile-menu-drawer {
   position: fixed;
-  top: var(--menu-height);
+  top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px)));
   left: 0;
   width: 100vw;
   background: var(--color-header-bg, var(--bg-body, #fff));
-  height: calc(100vh - var(--menu-height));
+  height: calc(100vh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
   display: block;
   border-top: 1px solid var(--color-header-border, var(--color-border));
   overflow-x: hidden;
@@ -23,7 +23,7 @@
               transform 0.25s cubic-bezier(0.104, 0.204, 0.492, 1), 
               visibility 0.25s;
   scrollbar-width: none;
-  z-index: 998;
+  z-index: 500;
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
 }
@@ -34,7 +34,7 @@
 
 @supports (height: 100dvh) {
   .mobile-menu-drawer {
-    height: calc(100dvh - var(--menu-height));
+    height: calc(100dvh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
   }
 }
 
@@ -311,15 +311,15 @@
 /* Mobile Menu Overlay */
 .mobile-menu-overlay {
   position: fixed;
-  top: 0;
+  top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px)));
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s, visibility 0.25s;
-  z-index: 997;
+  z-index: 499;
   pointer-events: none;
 }
 
@@ -382,6 +382,25 @@
 .header__mobile {
   position: relative;
   z-index: 10001 !important;
+}
+
+/* Ensure announcement bar stays above mobile menu drawer */
+.announcement__wrapper,
+.announcement__bar-outer,
+#announcement,
+.announcement__bar {
+  position: relative !important;
+  z-index: 10002 !important;
+  background-color: inherit !important;
+}
+
+body.mobile-menu-open .announcement__wrapper,
+body.mobile-menu-open .announcement__bar-outer,
+body.mobile-menu-open #announcement,
+body.mobile-menu-open .announcement__bar {
+  background-color: inherit !important;
+  z-index: 10002 !important;
+  position: relative !important;
 }
 
 /* Hide on desktop */

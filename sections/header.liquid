@@ -960,16 +960,16 @@
   
   #mobile-menu.mobile-menu-drawer {
     position: fixed;
-    top: var(--menu-height);
+    top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px)));
     left: 0;
     width: 100%;
-    height: calc(100vh - var(--menu-height));
-    height: calc(100dvh - var(--menu-height));
+    height: calc(100vh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
+    height: calc(100dvh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
     background: var(--COLOR-BG);
     border-top: 1px solid var(--COLOR-BORDER);
     opacity: 0;
     visibility: hidden;
-    z-index: 99999;
+    z-index: 500;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -1207,27 +1207,29 @@
   /* Overlay - Start below header and announcement bar */
   .mobile-menu-overlay {
     position: fixed;
-    top: var(--menu-height);
+    top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px)));
     left: 0;
     width: 100%;
-    height: calc(100vh - var(--menu-height));
-    height: calc(100dvh - var(--menu-height));
+    height: calc(100vh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
+    height: calc(100dvh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
-    z-index: 99998;
+    z-index: 499;
     pointer-events: none;
   }
   
   /* Ensure overlay doesn't affect announcement bar */
   .mobile-menu-overlay.active {
-    z-index: 99998 !important;
+    z-index: 499 !important;
+    pointer-events: auto;
   }
   
-  /* Prevent mobile menu drawer from affecting announcement bar */
+  /* Prevent mobile menu drawer from affecting announcement bar - drawer should be below header */
   #mobile-menu.mobile-menu-drawer {
-    z-index: 99999 !important;
+    z-index: 500 !important;
+    top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))) !important;
   }
   
   /* Ensure announcement bar stays above mobile menu overlay and maintains its color */
@@ -1236,7 +1238,8 @@
   #announcement,
   .announcement__bar {
     position: relative !important;
-    z-index: 2400 !important;
+    z-index: 10002 !important;
+    background-color: inherit !important;
   }
   
   /* When mobile menu is open, ensure announcement bar keeps its background color */
@@ -1245,20 +1248,21 @@
   body.mobile-menu-open #announcement,
   body.mobile-menu-open .announcement__bar {
     background-color: inherit !important;
-    z-index: 2400 !important;
+    z-index: 10002 !important;
     position: relative !important;
   }
   
-  /* Ensure mobile menu overlay doesn't cover announcement bar - overlay starts below header */
-  .mobile-menu-overlay {
-    top: var(--menu-height) !important;
-    z-index: 99998 !important;
+  /* Ensure header wrapper stays above mobile menu drawer */
+  .header__wrapper,
+  .theme__header {
+    z-index: 10000 !important;
+    position: relative !important;
   }
   
-  /* Mobile menu drawer should be below announcement bar */
-  #mobile-menu.mobile-menu-drawer {
-    z-index: 99999 !important;
-    top: var(--menu-height) !important;
+  /* Ensure mobile menu overlay starts below entire header */
+  .mobile-menu-overlay {
+    top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))) !important;
+    z-index: 499 !important;
   }
 
   .mobile-menu-overlay.active {
@@ -1379,17 +1383,22 @@
         shopifySection.style.setProperty('padding-top', '0', 'important');
       }
       
-      // Preserve announcement bar background color
-      const announcementBar = document.querySelector('#announcement, .announcement__wrapper, .announcement__bar-outer');
-      if (announcementBar) {
-        const originalBg = window.getComputedStyle(announcementBar).backgroundColor;
-        if (originalBg && originalBg !== 'rgba(0, 0, 0, 0)' && originalBg !== 'transparent') {
-          announcementBar.setAttribute('data-original-bg', originalBg);
-          announcementBar.style.setProperty('background-color', originalBg, 'important');
-          announcementBar.style.setProperty('z-index', '2400', 'important');
-          announcementBar.style.setProperty('position', 'relative', 'important');
-        }
-      }
+      // Preserve announcement bar background color and ensure proper z-index
+      const announcementSelectors = ['#announcement', '.announcement__wrapper', '.announcement__bar-outer', '.announcement__bar'];
+      announcementSelectors.forEach(function(selector) {
+        const announcementElements = document.querySelectorAll(selector);
+        announcementElements.forEach(function(el) {
+          const computedBg = window.getComputedStyle(el).backgroundColor;
+          if (computedBg && computedBg !== 'rgba(0, 0, 0, 0)' && computedBg !== 'transparent') {
+            if (!el.hasAttribute('data-original-bg')) {
+              el.setAttribute('data-original-bg', computedBg);
+            }
+            el.style.setProperty('background-color', computedBg, 'important');
+            el.style.setProperty('z-index', '10002', 'important');
+            el.style.setProperty('position', 'relative', 'important');
+          }
+        });
+      });
     }
     
     // Run immediately
@@ -1451,15 +1460,24 @@
       body.style.top = `-${scrollPosition}px`;
       
       // Preserve announcement bar background color when menu opens
-      const announcementBar = document.querySelector('#announcement, .announcement__wrapper, .announcement__bar-outer');
-      if (announcementBar) {
-        const originalBg = announcementBar.getAttribute('data-original-bg') || window.getComputedStyle(announcementBar).backgroundColor;
-        if (originalBg && originalBg !== 'rgba(0, 0, 0, 0)' && originalBg !== 'transparent') {
-          announcementBar.style.setProperty('background-color', originalBg, 'important');
-          announcementBar.style.setProperty('z-index', '2400', 'important');
-          announcementBar.style.setProperty('position', 'relative', 'important');
-        }
-      }
+      const announcementSelectors = ['#announcement', '.announcement__wrapper', '.announcement__bar-outer', '.announcement__bar'];
+      announcementSelectors.forEach(function(selector) {
+        const announcementElements = document.querySelectorAll(selector);
+        announcementElements.forEach(function(el) {
+          if (!el.hasAttribute('data-original-bg')) {
+            const computedBg = window.getComputedStyle(el).backgroundColor;
+            if (computedBg && computedBg !== 'rgba(0, 0, 0, 0)' && computedBg !== 'transparent') {
+              el.setAttribute('data-original-bg', computedBg);
+            }
+          }
+          const originalBg = el.getAttribute('data-original-bg') || window.getComputedStyle(el).backgroundColor;
+          if (originalBg && originalBg !== 'rgba(0, 0, 0, 0)' && originalBg !== 'transparent') {
+            el.style.setProperty('background-color', originalBg, 'important');
+            el.style.setProperty('z-index', '10002', 'important');
+            el.style.setProperty('position', 'relative', 'important');
+          }
+        });
+      });
     }
 
     function closeMobileMenu() {
