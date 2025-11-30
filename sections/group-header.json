@@ -11,6 +11,26 @@
   "type": "header",
   "name": "Header",
   "sections": {
+    "announcment_KqqnWj": {
+      "type": "announcment",
+      "name": "Announcement Bar - V2",
+      "settings": {
+        "announcement": true,
+        "speed": 5000,
+        "design": "design2",
+        "design1_message": "<strong>New Year Special</strong> Up to 20% off",
+        "countdown_day": 31,
+        "countdown_month": 12,
+        "countdown_year": 2024,
+        "countdown_hour": 23,
+        "countdown_minute": 59,
+        "design2_message": "Join 15,000+ Happy Customers",
+        "design3_message": "Join our New Year Challenge",
+        "design3_buttontext": "Join Now",
+        "design4_message": "Our 2025 Collection Launched",
+        "link": ""
+      }
+    },
     "header": {
       "type": "header",
       "settings": {
@@ -37,26 +57,6 @@
         "mobile_promo_heading": "",
         "mobile_promo_link": "",
         "mobile_promo_link_label": ""
-      }
-    },
-    "announcment_KqqnWj": {
-      "type": "announcment",
-      "name": "Announcement Bar - V2",
-      "settings": {
-        "announcement": true,
-        "speed": 5000,
-        "design": "design1",
-        "design1_message": "<strong>New Year Special</strong> Up to 20% off",
-        "countdown_day": 31,
-        "countdown_month": 12,
-        "countdown_year": 2024,
-        "countdown_hour": 23,
-        "countdown_minute": 59,
-        "design2_message": "Join 15,000+ Happy Customers",
-        "design3_message": "Join our New Year Challenge",
-        "design3_buttontext": "Join Now",
-        "design4_message": "Our 2025 Collection Launched",
-        "link": ""
       }
     }
   },
