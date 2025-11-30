@@ -565,8 +565,8 @@
   .header__wrapper {
     position: relative;
     z-index: 100000;
-    height: auto !important;
-    min-height: 0 !important;
+    height: fit-content !important;
+    min-height: fit-content !important;
     max-height: none !important;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
@@ -574,12 +574,12 @@
     margin-top: 0 !important;
     overflow: visible !important;
     display: block !important;
+    line-height: 0 !important;
   }
   
-  /* Ensure header wrapper height matches content exactly */
-  .header__wrapper {
-    height: fit-content !important;
-    min-height: fit-content !important;
+  /* Ensure header wrapper only takes space of its content */
+  .header__wrapper > * {
+    line-height: normal;
   }
   
   /* Remove any spacing from data attributes */
@@ -600,15 +600,41 @@
     margin-bottom: 0 !important;
     padding-top: 0 !important;
     margin-top: 0 !important;
+    line-height: normal !important;
   }
   
-  /* Remove any pseudo-elements that might add space */
+  /* CRITICAL: Remove any pseudo-elements that might add space */
   .header__wrapper .theme__header::before,
   .header__wrapper .theme__header::after {
     display: none !important;
     height: 0 !important;
+    max-height: 0 !important;
+    min-height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
+    content: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: auto !important;
+  }
+  
+  /* Fix header desktop upper and lower rows */
+  .header__wrapper .header__desktop__upper,
+  .header__wrapper .header__desktop__lower {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  
+  /* Fix header desktop bars */
+  .header__wrapper .header__desktop__bar__l,
+  .header__wrapper .header__desktop__bar__c,
+  .header__wrapper .header__desktop__bar__r {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
   }
   
   /* Fix mobile header */
@@ -655,6 +681,19 @@
     visibility: hidden !important;
     position: absolute !important;
     pointer-events: none !important;
+    top: 0 !important;
+    bottom: auto !important;
+  }
+  
+  /* Ensure hover__bg doesn't create any space */
+  .header__wrapper .header__menu .hover__bg {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
   }
   
   /* Fix header menu */
@@ -739,7 +778,7 @@
   }
   
   /* Fix header backfill - CRITICAL */
-  /* Since header is now relative, backfill should not add extra space */
+  /* Since header is now relative, backfill should match header height exactly */
   .header__backfill {
     margin: 0 !important;
     padding: 0 !important;
@@ -751,6 +790,7 @@
     overflow: hidden !important;
     position: relative !important;
     box-sizing: border-box !important;
+    font-size: 0 !important;
   }
   
   /* Ensure backfill doesn't create extra space */
@@ -767,6 +807,14 @@
   .header__wrapper + .header__backfill {
     margin-top: 0 !important;
     padding-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* Ensure no gap between header wrapper and backfill */
+  .header__wrapper + .header__backfill,
+  .header__backfill {
+    vertical-align: top !important;
   }
   
   /* Fix all header child elements */
@@ -778,7 +826,10 @@
   .header__wrapper .header__desktop__lower > *,
   .header__wrapper .header__desktop__bar__l,
   .header__wrapper .header__desktop__bar__c,
-  .header__wrapper .header__desktop__bar__r {
+  .header__wrapper .header__desktop__bar__r,
+  .header__wrapper [data-header-height],
+  .header__wrapper [data-header-desktop],
+  .header__wrapper [data-takes-space-wrapper] {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
@@ -788,10 +839,20 @@
     box-sizing: border-box;
   }
   
-  /* Remove any line-height that might add space */
-  .header__wrapper,
+  /* Remove any line-height that might add space - but allow content to have normal line-height */
+  .header__wrapper {
+    line-height: 0 !important;
+    font-size: 0 !important;
+  }
+  
+  .header__wrapper > * {
+    line-height: normal !important;
+    font-size: initial !important;
+  }
+  
   .header__wrapper .theme__header {
     line-height: normal !important;
+    font-size: initial !important;
   }
   
   /* Fix header sections wrapper */
