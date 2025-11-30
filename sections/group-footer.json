@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer-0": {
+          "type": "newsletter",
+          "disabled": true,
+          "settings": {
+            "title": "Newsletter",
+            "text": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>",
+            "show_name": true,
+            "button_text": "Join",
+            "show_arrow": false,
+            "terms": true,
+            "button_type": "btn--black",
+            "button_size": "",
+            "button_style": "btn--solid",
+            "show_social_links": false,
+            "column_width": 33
+          }
+        },
+        "footer-1": {
+          "type": "linklist",
+          "settings": {
+            "linklist": "footer",
+            "title": "",
+            "column_width": 33
+          }
+        },
+        "footer-2": {
+          "type": "text",
+          "settings": {
+            "image_width": 150,
+            "title": "Contact",
+            "text": "<p>Zair Experience Center</p><p>Banani 11, Dhaka, Bangladesh</p>",
+            "column_width": 33
+          }
+        }
+      },
+      "block_order": [
+        "footer-0",
+        "footer-1",
+        "footer-2"
+      ],
+      "settings": {
+        "logo_image_width": 150,
+        "overlay_opacity": 75,
+        "overlay_color": "#ffffff",
+        "padding_top": 75,
+        "padding_bottom": 30
+      }
+    },
+    "supporting-menu": {
+      "type": "section-supporting-menu",
+      "disabled": true,
+      "settings": {
+        "linklist": "",
+        "footer_payment_enable": false,
+        "show_locale_selector": true,
+        "show_currency_selector": true,
+        "type": "currency",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "section_anchor_logo_jq77Xk": {
+      "type": "section-anchor-logo",
+      "name": "Logo",
+      "settings": {
+        "logo": "shopify://shop_images/Untitled_280_x_80_px_2fcc0c62-34de-45c3-aee8-8906794b794b.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "footer",
+    "supporting-menu",
+    "section_anchor_logo_jq77Xk"
+  ]
+}

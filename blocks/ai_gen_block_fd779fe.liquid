@@ -1,0 +1,523 @@
+{% doc %}
+  @prompt
+    This layout uses a clean, two-column table style design. Left side shows section titles like Description, Details, Wash Care, and Shipping. Right side contains clear, structured content. Minimal borders, uppercase headings, consistent spacing, and readable typography enhance clarity, professionalism, and easy scanning for users. the colors should be customizable , in mobile version it should be in This layout uses a clean, two-column table style design, i don't need any divider between Row and also  , the section must have a black border around the section with customizable border radius. also all text content should be in the section and border, in mobile version it should be  clean, two-column table style design., on mobile version the border's left and right side is clasing with the screen i want a little bit space on both left and right side, out the border area color also should be customizable 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-product-info-table-wrapper-{{ ai_gen_id }} {
+    background-color: {{ block.settings.outer_background_color }};
+  }
+
+  .ai-product-info-table-{{ ai_gen_id }} {
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: {{ block.settings.section_padding }}px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-product-info-table__row-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: {{ block.settings.left_column_width }}% 1fr;
+    gap: {{ block.settings.column_gap }}px;
+    padding: {{ block.settings.row_padding }}px 0;
+  }
+
+  .ai-product-info-table__row-{{ ai_gen_id }}:first-child {
+    padding-top: 0;
+  }
+
+  .ai-product-info-table__row-{{ ai_gen_id }}:last-child {
+    padding-bottom: 0;
+  }
+
+  .ai-product-info-table__label-{{ ai_gen_id }} {
+    color: {{ block.settings.label_color }};
+    font-size: {{ block.settings.label_font_size }}px;
+    font-weight: {{ block.settings.label_font_weight }};
+    text-transform: {{ block.settings.label_text_transform }};
+    letter-spacing: {{ block.settings.label_letter_spacing }}px;
+  }
+
+  .ai-product-info-table__content-{{ ai_gen_id }} {
+    color: {{ block.settings.content_color }};
+    font-size: {{ block.settings.content_font_size }}px;
+    line-height: {{ block.settings.content_line_height }};
+  }
+
+  .ai-product-info-table__content-{{ ai_gen_id }} p {
+    margin: 0;
+  }
+
+  .ai-product-info-table__content-{{ ai_gen_id }} p + p {
+    margin-top: 8px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-product-info-table-{{ ai_gen_id }} {
+      padding: {{ block.settings.mobile_section_padding }}px;
+      margin-left: {{ block.settings.mobile_horizontal_margin }}px;
+      margin-right: {{ block.settings.mobile_horizontal_margin }}px;
+    }
+
+    .ai-product-info-table__row-{{ ai_gen_id }} {
+      grid-template-columns: {{ block.settings.mobile_left_column_width }}% 1fr;
+      gap: {{ block.settings.mobile_column_gap }}px;
+      padding: {{ block.settings.mobile_row_padding }}px 0;
+    }
+
+    .ai-product-info-table__label-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_label_font_size }}px;
+    }
+
+    .ai-product-info-table__content-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_content_font_size }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-product-info-table-wrapper-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-product-info-table-{{ ai_gen_id }}">
+    {% if block.settings.row_1_label != blank or block.settings.row_1_content != blank %}
+      <div class="ai-product-info-table__row-{{ ai_gen_id }}">
+        <div class="ai-product-info-table__label-{{ ai_gen_id }}">
+          {{ block.settings.row_1_label }}
+        </div>
+        <div class="ai-product-info-table__content-{{ ai_gen_id }}">
+          {{ block.settings.row_1_content }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.row_2_label != blank or block.settings.row_2_content != blank %}
+      <div class="ai-product-info-table__row-{{ ai_gen_id }}">
+        <div class="ai-product-info-table__label-{{ ai_gen_id }}">
+          {{ block.settings.row_2_label }}
+        </div>
+        <div class="ai-product-info-table__content-{{ ai_gen_id }}">
+          {{ block.settings.row_2_content }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.row_3_label != blank or block.settings.row_3_content != blank %}
+      <div class="ai-product-info-table__row-{{ ai_gen_id }}">
+        <div class="ai-product-info-table__label-{{ ai_gen_id }}">
+          {{ block.settings.row_3_label }}
+        </div>
+        <div class="ai-product-info-table__content-{{ ai_gen_id }}">
+          {{ block.settings.row_3_content }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.row_4_label != blank or block.settings.row_4_content != blank %}
+      <div class="ai-product-info-table__row-{{ ai_gen_id }}">
+        <div class="ai-product-info-table__label-{{ ai_gen_id }}">
+          {{ block.settings.row_4_label }}
+        </div>
+        <div class="ai-product-info-table__content-{{ ai_gen_id }}">
+          {{ block.settings.row_4_content }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.row_5_label != blank or block.settings.row_5_content != blank %}
+      <div class="ai-product-info-table__row-{{ ai_gen_id }}">
+        <div class="ai-product-info-table__label-{{ ai_gen_id }}">
+          {{ block.settings.row_5_label }}
+        </div>
+        <div class="ai-product-info-table__content-{{ ai_gen_id }}">
+          {{ block.settings.row_5_content }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.row_6_label != blank or block.settings.row_6_content != blank %}
+      <div class="ai-product-info-table__row-{{ ai_gen_id }}">
+        <div class="ai-product-info-table__label-{{ ai_gen_id }}">
+          {{ block.settings.row_6_label }}
+        </div>
+        <div class="ai-product-info-table__content-{{ ai_gen_id }}">
+          {{ block.settings.row_6_content }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product info table",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Row 1"
+    },
+    {
+      "type": "text",
+      "id": "row_1_label",
+      "label": "Label",
+      "default": "DESCRIPTION"
+    },
+    {
+      "type": "richtext",
+      "id": "row_1_content",
+      "label": "Content",
+      "default": "<p>Premium quality product with exceptional craftsmanship and attention to detail.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Row 2"
+    },
+    {
+      "type": "text",
+      "id": "row_2_label",
+      "label": "Label",
+      "default": "DETAILS"
+    },
+    {
+      "type": "richtext",
+      "id": "row_2_content",
+      "label": "Content",
+      "default": "<p>Made from high-quality materials. Durable and long-lasting construction.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Row 3"
+    },
+    {
+      "type": "text",
+      "id": "row_3_label",
+      "label": "Label",
+      "default": "WASH CARE"
+    },
+    {
+      "type": "richtext",
+      "id": "row_3_content",
+      "label": "Content",
+      "default": "<p>Machine wash cold. Tumble dry low. Do not bleach.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Row 4"
+    },
+    {
+      "type": "text",
+      "id": "row_4_label",
+      "label": "Label",
+      "default": "SHIPPING"
+    },
+    {
+      "type": "richtext",
+      "id": "row_4_content",
+      "label": "Content",
+      "default": "<p>Free shipping on orders over $50. Delivery within 5-7 business days.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Row 5"
+    },
+    {
+      "type": "text",
+      "id": "row_5_label",
+      "label": "Label"
+    },
+    {
+      "type": "richtext",
+      "id": "row_5_content",
+      "label": "Content"
+    },
+    {
+      "type": "header",
+      "content": "Row 6"
+    },
+    {
+      "type": "text",
+      "id": "row_6_label",
+      "label": "Label"
+    },
+    {
+      "type": "richtext",
+      "id": "row_6_content",
+      "label": "Content"
+    },
+    {
+      "type": "header",
+      "content": "Border"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Width",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "outer_background_color",
+      "label": "Outer background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Inner background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Content",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Label style"
+    },
+    {
+      "type": "range",
+      "id": "label_font_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "label_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "select",
+      "id": "label_text_transform",
+      "label": "Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "label_letter_spacing",
+      "min": 0,
+      "max": 3,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Letter spacing",
+      "default": 0.5
+    },
+    {
+      "type": "header",
+      "content": "Content style"
+    },
+    {
+      "type": "range",
+      "id": "content_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "content_line_height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "label": "Line height",
+      "default": 1.6
+    },
+    {
+      "type": "header",
+      "content": "Desktop layout"
+    },
+    {
+      "type": "range",
+      "id": "left_column_width",
+      "min": 20,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "label": "Left column width",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "row_padding",
+      "min": 5,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Row spacing",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Column gap",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "mobile_horizontal_margin",
+      "min": 0,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "label": "Horizontal margin",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "mobile_left_column_width",
+      "min": 25,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "label": "Left column width",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "mobile_section_padding",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_row_padding",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "label": "Row spacing",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "mobile_column_gap",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Column gap",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "mobile_label_font_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Label font size",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_font_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Content font size",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product info table"
+    }
+  ]
+}
+{% endschema %}

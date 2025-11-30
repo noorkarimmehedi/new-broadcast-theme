@@ -1,0 +1,77 @@
+@font-face {
+  font-family: Baskervville;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//zairbd.com/cdn/fonts/baskervville/baskervville_n4.6b0d1f33845dccb0601e970c218adacec89de866.woff2") format("woff2"),
+       url("//zairbd.com/cdn/fonts/baskervville/baskervville_n4.2ed594e690e8075ab08aa6b2c3b34b3a5b91366a.woff") format("woff");
+}
+
+@font-face {
+  font-family: Figtree;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//zairbd.com/cdn/fonts/figtree/figtree_n4.3c0838aba1701047e60be6a99a1b0a40ce9b8419.woff2") format("woff2"),
+       url("//zairbd.com/cdn/fonts/figtree/figtree_n4.c0575d1db21fc3821f17fd6617d3dee552312137.woff") format("woff");
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//zairbd.com/cdn/fonts/poppins/poppins_n4.0ba78fa5af9b0e1a374041b3ceaadf0a43b41362.woff2") format("woff2"),
+       url("//zairbd.com/cdn/fonts/poppins/poppins_n4.214741a72ff2596839fc9760ee7a770386cf16ca.woff") format("woff");
+}
+
+
+
+  @font-face {
+  font-family: Baskervville;
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("//zairbd.com/cdn/fonts/baskervville/baskervville_n5.f0aed37bd65ce4925d16e8863725b063608afd41.woff2") format("woff2"),
+       url("//zairbd.com/cdn/fonts/baskervville/baskervville_n5.22ea678b1d495e6f9d7ad22a73f03facf9661572.woff") format("woff");
+}
+
+
+
+
+  @font-face {
+  font-family: Figtree;
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("//zairbd.com/cdn/fonts/figtree/figtree_n5.3b6b7df38aa5986536945796e1f947445832047c.woff2") format("woff2"),
+       url("//zairbd.com/cdn/fonts/figtree/figtree_n5.f26bf6dcae278b0ed902605f6605fa3338e81dab.woff") format("woff");
+}
+
+
+
+
+
+
+
+  @font-face {
+  font-family: Figtree;
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("//zairbd.com/cdn/fonts/figtree/figtree_i4.89f7a4275c064845c304a4cf8a4a586060656db2.woff2") format("woff2"),
+       url("//zairbd.com/cdn/fonts/figtree/figtree_i4.6f955aaaafc55a22ffc1f32ecf3756859a5ad3e2.woff") format("woff");
+}
+
+
+
+
+  @font-face {
+  font-family: Figtree;
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  src: url("//zairbd.com/cdn/fonts/figtree/figtree_i5.969396f679a62854cf82dbf67acc5721e41351f0.woff2") format("woff2"),
+       url("//zairbd.com/cdn/fonts/figtree/figtree_i5.93bc1cad6c73ca9815f9777c49176dfc9d2890dd.woff") format("woff");
+}
+

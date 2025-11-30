@@ -1,0 +1,441 @@
+/* ============================================
+   MOBILE MENU - INLINE SUBCOLLECTIONS
+   Clean layout with subcollections below parent
+   ============================================ */
+
+/* Reset and Base Styles */
+.drawer--header .drawer__inner {
+  background: #ffffff;
+  width: 380px;
+  max-width: 90vw;
+  font-family: 'Baskervville', serif;
+}
+
+.drawer--header .drawer__head {
+  padding: 20px;
+  border-bottom: none;
+  background: #ffffff;
+}
+
+.drawer--header .drawer__close {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawer--header .drawer__close svg {
+  width: 22px;
+  height: 22px;
+  color: #000000;
+}
+
+/* Body and Content */
+.drawer--header .drawer__body {
+  background: #ffffff;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 72px);
+}
+
+.drawer--header .drawer__content {
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.drawer--header .drawer__menu {
+  padding: 0 20px 20px 20px;
+}
+
+/* Remove "SHOP" label */
+.drawer--header .drawer__menu:before {
+  display: none;
+}
+
+/* Main Navigation Wrapper */
+.drawer--header .sliderule__wrapper {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+/* DISABLE SLIDING PANELS - Show everything inline */
+.drawer--header .mobile__menu__dropdown,
+.drawer--header .sliderule__panel {
+  position: static !important;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  pointer-events: auto !important;
+}
+
+/* Hide secondary menu wrapper (not needed) */
+.drawer--header .sliderule__wrapper--secondary {
+  display: none;
+}
+
+/* Hide back buttons (not needed for inline display) */
+.drawer--header .sliderow--back {
+  display: none !important;
+}
+
+/* ALL NAVIGATION ITEMS - Reset */
+.drawer--header .sliderow {
+  padding: 0;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+/* Main level items without children */
+.drawer--header .drawer__menu > .sliderule__wrapper > .sliderow {
+  cursor: default;
+}
+
+/* Main Collection Links - DEFAULT for all items */
+.drawer--header .sliderow__title {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  padding: 14px 0;
+  border-bottom: 1px solid #000000;
+  cursor: pointer;
+  text-transform: capitalize;
+  margin: 0;
+  font-family: 'Baskervville', serif;
+}
+
+/* ===== FIRST THREE ITEMS: HOME, NEW ARRIVALS, BEST SELLERS ===== */
+/* Make them BOLD, SAME SIZE, and TIGHT SPACING */
+.drawer--header .drawer__menu > .sliderule__wrapper:nth-child(1),
+.drawer--header .drawer__menu > .sliderule__wrapper:nth-child(2),
+.drawer--header .drawer__menu > .sliderule__wrapper:nth-child(3) {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.drawer--header .drawer__menu > .sliderule__wrapper:nth-child(1) .sliderow__title,
+.drawer--header .drawer__menu > .sliderule__wrapper:nth-child(2) .sliderow__title,
+.drawer--header .drawer__menu > .sliderule__wrapper:nth-child(3) .sliderow__title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  padding: 8px 0 !important;
+  margin: 0 !important;
+  border-bottom: none !important;
+  line-height: 1.4 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  font-family: 'Baskervville', serif !important;
+}
+
+/* Extra tight spacing for first item (Home) */
+.drawer--header .drawer__menu > .sliderule__wrapper:nth-child(1) .sliderow__title {
+  padding: 8px 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Tight spacing for second item (New Arrivals) */
+.drawer--header .drawer__menu > .sliderule__wrapper:nth-child(2) .sliderow__title {
+  padding: 8px 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Tight spacing for third item (Best Sellers) - with bottom border after */
+.drawer--header .drawer__menu > .sliderule__wrapper:nth-child(3) .sliderow__title {
+  padding: 8px 0 !important;
+  padding-bottom: 8px !important;
+  margin-bottom: 0 !important;
+  border-bottom: 1px solid #000000 !important;
+}
+
+/* REST OF THE COLLECTIONS - Normal Weight (starting from 4th item) */
+.drawer--header .drawer__menu > .sliderule__wrapper:nth-child(n+4) > .sliderow > .sliderow__title {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  padding: 14px 0 !important;
+}
+
+/* Hover Effect on Main Items - Consistent for ALL items */
+.drawer--header .sliderow__title:hover {
+  background-color: #f5f5f5;
+}
+
+/* HIDE ALL CHEVRONS - We don't need them */
+.drawer--header .sliderule__chevron--right,
+.drawer--header .sliderule__chevron--left {
+  display: none !important;
+}
+
+/* Subcollection Container */
+.drawer--header .sliderow__links {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border-left: none;
+  margin-left: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+/* Add spacing between parent and subcollections */
+.drawer--header .sliderule__wrapper:has(.sliderow__links) > .sliderow > .sliderow__title {
+  margin-bottom: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #000000;
+}
+
+/* Make subcollections always visible */
+.drawer--header .sliderow__links .sliderule__wrapper {
+  border-bottom: none;
+  margin: 0;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: static !important;
+  transform: none !important;
+}
+
+/* Subcollection Links */
+.drawer--header .sliderow__links .sliderow {
+  padding: 0;
+  background: none;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.drawer--header .sliderow__links .sliderow__title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666 !important;
+  padding: 12px 0 12px 24px;
+  border-bottom: none;
+  transition: all 0.2s ease;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  text-transform: capitalize;
+  font-family: 'Baskervville', serif;
+}
+
+.drawer--header .sliderow__links .sliderow:last-child .sliderow__title {
+  padding-bottom: 16px;
+}
+
+.drawer--header .sliderow__links .sliderow__title:hover {
+  color: #000000 !important;
+  background-color: #f5f5f5;
+}
+
+/* Collections without subcollections - keep normal spacing */
+.drawer--header .sliderule__wrapper:not(:has(.sliderow__links)) {
+  margin-bottom: 0;
+}
+
+/* Add bottom border to parent items that have subcollections - AFTER the subcollections */
+.drawer--header .sliderule__wrapper:has(.sliderow__links) {
+  border-bottom: 1px solid #000000;
+  margin-bottom: 0;
+}
+
+/* Remove border from parent title when it has subcollections */
+.drawer--header .sliderule__wrapper:has(.sliderow__links) > .sliderow > .sliderow__title {
+  border-bottom: none;
+}
+
+/* Bottom Section - LOGIN */
+.drawer--header .drawer__bottom {
+  padding: 20px;
+  background: #ffffff;
+  border-top: 1px solid #d0d0d0;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Hide social and localization in bottom */
+.drawer--header .drawer__bottom__row {
+  display: none;
+}
+
+/* Show only login/account link */
+.drawer--header .drawer__bottom__row:has(a[href*="/account"]),
+.drawer--header .drawer__bottom__row:has(a[href*="/login"]) {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+}
+
+/* Style the LOGIN link - positioned at bottom left */
+.drawer--header a[href*="/account"],
+.drawer--header a[href*="/login"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #000000;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  text-transform: none;
+  padding: 0;
+  font-family: 'Baskervville', serif;
+}
+
+.drawer--header a[href*="/account"]:hover,
+.drawer--header a[href*="/login"]:hover {
+  color: #666666;
+}
+
+/* Make sure icon and text are together on the left */
+.drawer--header a[href*="/account"] .navlink,
+.drawer--header a[href*="/login"] .navlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drawer--header a[href*="/account"] svg,
+.drawer--header a[href*="/login"] svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* If there's no icon, add one with CSS */
+.drawer--header a[href*="/account"]::before,
+.drawer--header a[href*="/login"]::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'%3E%3C/path%3E%3Ccircle cx='12' cy='7' r='4'%3E%3C/circle%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+  display: none;
+}
+
+/* Only show CSS icon if no SVG exists */
+.drawer--header a[href*="/account"]:not(:has(svg))::before,
+.drawer--header a[href*="/login"]:not(:has(svg))::before {
+  display: block;
+}
+
+/* Remove focus outlines */
+.drawer--header .sliderow:focus,
+.drawer--header .sliderow__title:focus {
+  outline: none;
+}
+
+.drawer--header .drawer__menu > .sliderule__wrapper:last-child > .sliderow > .sliderow__title {
+  border-bottom: none;
+}
+
+/* Optional: Highlight specific items (like Sale) */
+.drawer--header .sliderow__title--highlight {
+  color: #FF0000 !important;
+}
+
+/* Remove the SALE badge */
+.drawer--header .sliderow__title--highlight:after {
+  display: none;
+}
+
+/* Hide visually-hidden elements properly */
+.drawer--header .visually-hidden {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 375px) {
+  .drawer--header .drawer__inner {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .drawer--header .drawer__menu > .sliderule__wrapper:nth-child(1) .sliderow__title,
+  .drawer--header .drawer__menu > .sliderule__wrapper:nth-child(2) .sliderow__title,
+  .drawer--header .drawer__menu > .sliderule__wrapper:nth-child(3) .sliderow__title {
+    font-size: 16px !important;
+  }
+  
+  .drawer--header .sliderow__title {
+    font-size: 15px;
+  }
+  
+  .drawer--header .sliderow__links .sliderow__title {
+    font-size: 13px;
+    padding: 9px 14px;
+  }
+}
+
+/* Smooth scrolling */
+.drawer--header .drawer__content {
+  scroll-behavior: smooth;
+}
+
+/* Add subtle animation when menu opens */
+.drawer--header .drawer__inner {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Ensure subcollections are always visible (no JS toggle needed) */
+.drawer--header .sliderow__links {
+  display: block !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Force all nested items to show */
+.drawer--header .sliderow__links * {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  position: static !important;
+}
+
+/* Override any animation/hidden states */
+.drawer--header .sliderow__links [data-animates],
+.drawer--header .sliderow__links [data-animation] {
+  animation: none !important;
+  transition: none !important;
+}
