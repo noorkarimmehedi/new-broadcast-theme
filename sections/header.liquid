@@ -565,7 +565,7 @@
   .header__wrapper,
   .header__wrapper.header__wrapper {
     position: relative !important;
-    z-index: 100000 !important;
+    z-index: 2300 !important;
     height: fit-content !important;
     min-height: fit-content !important;
     max-height: none !important;
@@ -576,6 +576,18 @@
     overflow: visible !important;
     display: block !important;
     line-height: 0 !important;
+  }
+  
+  /* Ensure cart drawer appears above header on mobile */
+  @media only screen and (max-width: 989px) {
+    .drawer--cart,
+    .drawer--cart .drawer__inner {
+      z-index: 7000 !important;
+    }
+    
+    .drawer--cart .drawer__underlay {
+      z-index: 6999 !important;
+    }
   }
   
   /* Ensure header wrapper only takes space of its content */
@@ -605,6 +617,7 @@
     margin-top: 0 !important;
     line-height: normal !important;
     width: 100% !important;
+    z-index: 2300 !important;
   }
   
   /* CRITICAL: Remove any pseudo-elements that might add space */
@@ -1191,7 +1204,7 @@
     text-decoration: none;
   }
 
-  /* Overlay */
+  /* Overlay - Start below header and announcement bar */
   .mobile-menu-overlay {
     position: fixed;
     top: var(--menu-height);
@@ -1205,6 +1218,47 @@
     transition: opacity 0.3s, visibility 0.3s;
     z-index: 99998;
     pointer-events: none;
+  }
+  
+  /* Ensure overlay doesn't affect announcement bar */
+  .mobile-menu-overlay.active {
+    z-index: 99998 !important;
+  }
+  
+  /* Prevent mobile menu drawer from affecting announcement bar */
+  #mobile-menu.mobile-menu-drawer {
+    z-index: 99999 !important;
+  }
+  
+  /* Ensure announcement bar stays above mobile menu overlay and maintains its color */
+  .announcement__wrapper,
+  .announcement__bar-outer,
+  #announcement,
+  .announcement__bar {
+    position: relative !important;
+    z-index: 2400 !important;
+  }
+  
+  /* When mobile menu is open, ensure announcement bar keeps its background color */
+  body.mobile-menu-open .announcement__wrapper,
+  body.mobile-menu-open .announcement__bar-outer,
+  body.mobile-menu-open #announcement,
+  body.mobile-menu-open .announcement__bar {
+    background-color: inherit !important;
+    z-index: 2400 !important;
+    position: relative !important;
+  }
+  
+  /* Ensure mobile menu overlay doesn't cover announcement bar - overlay starts below header */
+  .mobile-menu-overlay {
+    top: var(--menu-height) !important;
+    z-index: 99998 !important;
+  }
+  
+  /* Mobile menu drawer should be below announcement bar */
+  #mobile-menu.mobile-menu-drawer {
+    z-index: 99999 !important;
+    top: var(--menu-height) !important;
   }
 
   .mobile-menu-overlay.active {
@@ -1324,6 +1378,18 @@
         shopifySection.style.setProperty('margin-top', '0', 'important');
         shopifySection.style.setProperty('padding-top', '0', 'important');
       }
+      
+      // Preserve announcement bar background color
+      const announcementBar = document.querySelector('#announcement, .announcement__wrapper, .announcement__bar-outer');
+      if (announcementBar) {
+        const originalBg = window.getComputedStyle(announcementBar).backgroundColor;
+        if (originalBg && originalBg !== 'rgba(0, 0, 0, 0)' && originalBg !== 'transparent') {
+          announcementBar.setAttribute('data-original-bg', originalBg);
+          announcementBar.style.setProperty('background-color', originalBg, 'important');
+          announcementBar.style.setProperty('z-index', '2400', 'important');
+          announcementBar.style.setProperty('position', 'relative', 'important');
+        }
+      }
     }
     
     // Run immediately
@@ -1383,6 +1449,17 @@
       mobileMenuToggle.setAttribute('aria-label', 'Close menu');
       body.classList.add('mobile-menu-open');
       body.style.top = `-${scrollPosition}px`;
+      
+      // Preserve announcement bar background color when menu opens
+      const announcementBar = document.querySelector('#announcement, .announcement__wrapper, .announcement__bar-outer');
+      if (announcementBar) {
+        const originalBg = announcementBar.getAttribute('data-original-bg') || window.getComputedStyle(announcementBar).backgroundColor;
+        if (originalBg && originalBg !== 'rgba(0, 0, 0, 0)' && originalBg !== 'transparent') {
+          announcementBar.style.setProperty('background-color', originalBg, 'important');
+          announcementBar.style.setProperty('z-index', '2400', 'important');
+          announcementBar.style.setProperty('position', 'relative', 'important');
+        }
+      }
     }
 
     function closeMobileMenu() {
