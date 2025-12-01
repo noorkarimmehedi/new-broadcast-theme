@@ -558,37 +558,13 @@
 
 <style>
   /* =====================================================
-     ANNOUNCEMENT BAR - HIGHEST PRIORITY Z-INDEX
-     ===================================================== */
-  
-  /* Announcement bar must be above everything except modals */
-  .shopify-section-group-group-header .announcement__wrapper,
-  .shopify-section-group-group-header .announcement__bar-outer,
-  .shopify-section-group-group-header #announcement,
-  .shopify-section-group-group-header .announcement__bar,
-  .announcement__wrapper,
-  .announcement__bar-outer,
-  #announcement,
-  .announcement__bar {
-    position: relative !important;
-    z-index: 99999 !important;
-  }
-  
-  /* Ensure announcement bar section wrapper has proper z-index */
-  .shopify-section-announcement-bar,
-  [data-section-type="announcement"] {
-    position: relative !important;
-    z-index: 99999 !important;
-  }
-
-  /* =====================================================
-     FIX HEADER WHITE SPACE - TARGET INTERNAL ELEMENTS
+     HEADER STYLES - Clean and Organized
      ===================================================== */
   
   .header__wrapper,
   .header__wrapper.header__wrapper {
     position: relative !important;
-    z-index: 9999 !important;
+    z-index: 1000 !important;
     height: fit-content !important;
     min-height: fit-content !important;
     max-height: none !important;
@@ -598,29 +574,6 @@
     margin-top: 0 !important;
     overflow: visible !important;
     display: block !important;
-    line-height: 0 !important;
-  }
-  
-  /* Ensure cart drawer appears above header on mobile */
-  @media only screen and (max-width: 989px) {
-    .drawer--cart,
-    .drawer--cart .drawer__inner {
-      z-index: 100001 !important;
-    }
-    
-    .drawer--cart .drawer__underlay {
-      z-index: 100000 !important;
-    }
-  }
-  
-  .header__wrapper > * {
-    line-height: normal;
-  }
-  
-  [data-header-height],
-  [data-header-wrapper] {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
   }
   
   .header__wrapper .theme__header,
@@ -635,308 +588,37 @@
     margin-bottom: 0 !important;
     padding-top: 0 !important;
     margin-top: 0 !important;
-    line-height: normal !important;
     width: 100% !important;
-    z-index: 9999 !important;
+    z-index: 1000 !important;
   }
   
   .header__wrapper .theme__header::before,
   .header__wrapper .theme__header::after {
     display: none !important;
-    height: 0 !important;
-    max-height: 0 !important;
-    min-height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
     content: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    position: absolute !important;
-    top: 0 !important;
-    bottom: auto !important;
-  }
-  
-  .header__wrapper .header__desktop__upper,
-  .header__wrapper .header__desktop__lower {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-    height: auto !important;
-    min-height: 0 !important;
-  }
-  
-  .header__wrapper .header__desktop__bar__l,
-  .header__wrapper .header__desktop__bar__c,
-  .header__wrapper .header__desktop__bar__r {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  
-  .header__wrapper .header__mobile {
-    height: auto !important;
-    min-height: 0 !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  
-  .header__wrapper .header__desktop {
-    height: auto !important;
-    min-height: 0 !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  
-  .header__wrapper .header__desktop__upper {
-    height: auto !important;
-    min-height: 0 !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  
-  .header__wrapper .header__desktop__lower {
-    height: auto !important;
-    min-height: 0 !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
   }
   
   .header__wrapper .hover__bg {
     display: none !important;
     height: 0 !important;
-    min-height: 0 !important;
-    max-height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
     opacity: 0 !important;
     visibility: hidden !important;
-    position: absolute !important;
-    pointer-events: none !important;
-    top: 0 !important;
-    bottom: auto !important;
-  }
-  
-  .header__wrapper .header__menu .hover__bg {
-    position: absolute !important;
-    top: 0 !important;
-    bottom: auto !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 0 !important;
-    width: 0 !important;
-  }
-  
-  .header__wrapper .header__menu {
-    height: auto !important;
-    min-height: 0 !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-    position: relative !important;
-  }
-  
-  .header__wrapper .hover__bar {
-    position: absolute !important;
-    bottom: 0 !important;
-    height: 2px !important;
-    min-height: 0 !important;
-  }
-  
-  .header__wrapper .navlink--has-dropdown::after,
-  .header__wrapper .header__dropdown {
-    position: absolute !important;
-  }
-  
-  .page-header,
-  .shopify-section.page-header,
-  .shopify-section-group-group-header {
-    height: auto !important;
-    min-height: 0 !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  
-  .header-sections .page-header,
-  .header-sections .shopify-section {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  
-  .header-sections {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  
-  .header-sections .section-padding,
-  .header-sections [class*="section-padding"],
-  .header-sections .announcement__wrapper.section-padding {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  
-  .header-sections .announcement__wrapper,
-  .header-sections .announcement__bar-outer,
-  .header-sections #announcement {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  
-  .header-sections + *,
-  .header__wrapper + *,
-  .header__backfill + * {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  
-  .header-sections:last-child,
-  .header__wrapper:last-child,
-  .header__backfill:last-child {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  
-  .container > .header-sections {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  
-  .header__backfill,
-  .header__backfill[data-header-backfill] {
-    margin: 0 !important;
-    padding: 0 !important;
-    height: 0 !important;
-    max-height: 0 !important;
-    min-height: 0 !important;
-    line-height: 0 !important;
-    display: none !important;
-    overflow: hidden !important;
-    position: absolute !important;
-    box-sizing: border-box !important;
-    font-size: 0 !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-  }
-  
-  .header__wrapper ~ .header__backfill {
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  
-  .header__backfill::before,
-  .header__backfill::after {
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    content: none !important;
-  }
-  
-  .header__wrapper + .header__backfill {
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  
-  .header__wrapper > *,
-  .header__wrapper .theme__header > *,
-  .header__wrapper .header__mobile > *,
-  .header__wrapper .header__desktop > *,
-  .header__wrapper .header__desktop__upper > *,
-  .header__wrapper .header__desktop__lower > *,
-  .header__wrapper .header__desktop__bar__l,
-  .header__wrapper .header__desktop__bar__c,
-  .header__wrapper .header__desktop__bar__r,
-  .header__wrapper [data-header-height],
-  .header__wrapper [data-header-desktop],
-  .header__wrapper [data-takes-space-wrapper] {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  
-  .header__wrapper * {
-    box-sizing: border-box;
-  }
-  
-  .header__wrapper {
-    line-height: 0 !important;
-    font-size: 0 !important;
-  }
-  
-  .header__wrapper > * {
-    line-height: normal !important;
-    font-size: initial !important;
-  }
-  
-  .header__wrapper .theme__header {
-    line-height: normal !important;
-    font-size: initial !important;
-  }
-  
-  .header-sections {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  
-  .header-sections section,
-  .header-sections [data-section-type],
-  .header-sections .section-padding,
-  .header-sections *[class*="section-padding"] {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-    --padding-bottom: 0 !important;
-    --PB: 0 !important;
-  }
-  
-  .header-sections .announcement__wrapper,
-  .header-sections .announcement__wrapper.section-padding,
-  .header-sections #announcement {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    --padding-top: 0 !important;
-    --padding-bottom: 0 !important;
-    --PT: 0 !important;
-    --PB: 0 !important;
-  }
-  
-  .header-sections .announcement__bar-outer,
-  .header-sections .announcement__bar,
-  .header-sections .announcement__bar-holder {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  
-  .header__wrapper::after,
-  .header__wrapper::before {
-    content: none !important;
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  
-  .container .header-sections {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  
-  .header-sections::after {
-    content: none !important;
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
   }
   
   /* Sticky header */
   [data-header-sticky] {
     position: sticky;
     top: 0;
+    z-index: 1000;
+  }
+  
+  /* Header backfill - hide it */
+  .header__backfill,
+  .header__backfill[data-header-backfill] {
+    display: none !important;
+    height: 0 !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
 
   /* =====================================================
@@ -953,13 +635,13 @@
     background: var(--COLOR-BG);
     opacity: 0;
     visibility: hidden;
-    z-index: 9998 !important;
+    z-index: 900 !important;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transform: translateY(-20px);
+    transform: translateY(-10px);
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-    padding-top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px)));
+    padding-top: var(--mobile-menu-top-offset, 120px);
   }
 
   #mobile-menu.mobile-menu-drawer.active {
@@ -1189,7 +871,10 @@
     text-decoration: none;
   }
 
-  /* Overlay - Full screen but below announcement bar and header */
+  /* =====================================================
+     MOBILE MENU OVERLAY
+     ===================================================== */
+  
   .mobile-menu-overlay {
     position: fixed;
     top: 0;
@@ -1201,7 +886,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
-    z-index: 9997 !important;
+    z-index: 899 !important;
     pointer-events: none;
   }
 
@@ -1211,7 +896,10 @@
     pointer-events: auto;
   }
 
-  /* Hamburger button */
+  /* =====================================================
+     HAMBURGER BUTTON STYLES
+     ===================================================== */
+  
   .header__mobile__hamburger .icon-menu {
     display: flex;
     align-items: center;
@@ -1248,144 +936,43 @@
     display: block;
   }
 
-  /* Body scroll lock */
+  /* =====================================================
+     BODY SCROLL LOCK WHEN MENU IS OPEN
+     ===================================================== */
+  
   body.mobile-menu-open {
     overflow: hidden;
     position: fixed;
     width: 100%;
     height: 100%;
   }
-  
-  /* When mobile menu is open, ensure announcement bar stays visible and clickable */
-  body.mobile-menu-open .shopify-section-group-group-header,
-  body.mobile-menu-open .announcement__wrapper,
-  body.mobile-menu-open .announcement__bar-outer,
-  body.mobile-menu-open #announcement,
-  body.mobile-menu-open .announcement__bar,
-  body.mobile-menu-open .shopify-section-announcement-bar,
-  body.mobile-menu-open [data-section-type="announcement"] {
-    position: relative !important;
-    z-index: 99999 !important;
-    pointer-events: auto !important;
-  }
-  
-  /* Ensure header stays above mobile menu */
-  body.mobile-menu-open .header__wrapper,
-  body.mobile-menu-open .theme__header {
-    position: relative !important;
-    z-index: 99998 !important;
-    pointer-events: auto !important;
-  }
 
-  /* Ensure mobile menu drawer doesn't affect header spacing */
-  #mobile-menu.mobile-menu-drawer {
-    margin-top: 0 !important;
-    padding-top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))) !important;
-  }
+  /* =====================================================
+     HIDE MOBILE MENU ON DESKTOP
+     ===================================================== */
   
-  /* Hide on desktop */
   @media only screen and (min-width: 990px) {
     #mobile-menu.mobile-menu-drawer,
     .mobile-menu-overlay {
       display: none !important;
     }
   }
-</style>
 
-<script>
-  // CRITICAL: Apply header spacing fix after page loads to ensure it overrides theme.css
-  (function() {
-    function fixHeaderSpacing() {
-      const headerWrapper = document.querySelector('.header__wrapper');
-      const themeHeader = document.querySelector('.theme__header');
-      const headerBackfill = document.querySelector('.header__backfill');
-      
-      if (headerWrapper) {
-        headerWrapper.style.setProperty('margin-bottom', '0', 'important');
-        headerWrapper.style.setProperty('padding-bottom', '0', 'important');
-        headerWrapper.style.setProperty('height', 'fit-content', 'important');
-        headerWrapper.style.setProperty('min-height', 'fit-content', 'important');
-        headerWrapper.style.setProperty('z-index', '9999', 'important');
-      }
-      
-      if (themeHeader) {
-        themeHeader.style.setProperty('position', 'relative', 'important');
-        themeHeader.style.setProperty('margin-bottom', '0', 'important');
-        themeHeader.style.setProperty('padding-bottom', '0', 'important');
-        themeHeader.style.setProperty('height', 'auto', 'important');
-        themeHeader.style.setProperty('min-height', '0', 'important');
-        themeHeader.style.setProperty('z-index', '9999', 'important');
-      }
-      
-      if (headerBackfill) {
-        headerBackfill.style.setProperty('display', 'none', 'important');
-        headerBackfill.style.setProperty('height', '0', 'important');
-        headerBackfill.style.setProperty('margin-bottom', '0', 'important');
-        headerBackfill.style.setProperty('padding-bottom', '0', 'important');
-        headerBackfill.style.setProperty('margin-top', '0', 'important');
-        headerBackfill.style.setProperty('padding-top', '0', 'important');
-        headerBackfill.style.setProperty('visibility', 'hidden', 'important');
-        headerBackfill.style.setProperty('opacity', '0', 'important');
-      }
-      
-      // Fix all header sections
-      const headerSections = document.querySelectorAll('.header-sections > *');
-      headerSections.forEach(function(section) {
-        section.style.setProperty('margin-bottom', '0', 'important');
-        section.style.setProperty('padding-bottom', '0', 'important');
-        section.style.setProperty('margin-top', '0', 'important');
-        section.style.setProperty('padding-top', '0', 'important');
-      });
-      
-      // Fix shopify-section wrapper
-      const shopifySection = document.querySelector('.shopify-section.page-header');
-      if (shopifySection) {
-        shopifySection.style.setProperty('margin-bottom', '0', 'important');
-        shopifySection.style.setProperty('padding-bottom', '0', 'important');
-        shopifySection.style.setProperty('margin-top', '0', 'important');
-        shopifySection.style.setProperty('padding-top', '0', 'important');
-      }
-      
-      // CRITICAL: Ensure announcement bar has highest z-index and is fully visible
-      const announcementSelectors = [
-        '#announcement', 
-        '.announcement__wrapper', 
-        '.announcement__bar-outer', 
-        '.announcement__bar',
-        '.shopify-section-announcement-bar',
-        '[data-section-type="announcement"]'
-      ];
-      
-      announcementSelectors.forEach(function(selector) {
-        const announcementElements = document.querySelectorAll(selector);
-        announcementElements.forEach(function(el) {
-          el.style.setProperty('position', 'relative', 'important');
-          el.style.setProperty('z-index', '99999', 'important');
-          el.style.setProperty('pointer-events', 'auto', 'important');
-          el.style.setProperty('visibility', 'visible', 'important');
-          el.style.setProperty('opacity', '1', 'important');
-        });
-      });
+  /* =====================================================
+     CART DRAWER Z-INDEX
+     ===================================================== */
+  
+  @media only screen and (max-width: 989px) {
+    .drawer--cart,
+    .drawer--cart .drawer__inner {
+      z-index: 10001 !important;
     }
     
-    // Run immediately
-    fixHeaderSpacing();
-    
-    // Run after DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', fixHeaderSpacing);
-    } else {
-      fixHeaderSpacing();
+    .drawer--cart .drawer__underlay {
+      z-index: 10000 !important;
     }
-    
-    // Run after window loads
-    window.addEventListener('load', fixHeaderSpacing);
-    
-    // Run after a short delay to ensure all CSS has loaded
-    setTimeout(fixHeaderSpacing, 100);
-    setTimeout(fixHeaderSpacing, 500);
-  })();
-</script>
+  }
+</style>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -1397,6 +984,45 @@
     if (!mobileMenuToggle || !mobileMenu) return;
 
     let scrollPosition = 0;
+
+    // Calculate the top offset for the mobile menu (announcement bar + header height)
+    function calculateMenuTopOffset() {
+      let topOffset = 0;
+      
+      // Get announcement bar height
+      const announcementBar = document.querySelector('.announcement__wrapper, .announcement__bar-outer, #announcement, [data-section-type="announcement"]');
+      if (announcementBar) {
+        topOffset += announcementBar.offsetHeight;
+      }
+      
+      // Get header height
+      const header = document.querySelector('.header__wrapper, .theme__header');
+      if (header) {
+        topOffset += header.offsetHeight;
+      }
+      
+      // If we couldn't find separate elements, use the header group
+      if (topOffset === 0) {
+        const headerGroup = document.querySelector('.shopify-section-group-group-header');
+        if (headerGroup) {
+          topOffset = headerGroup.offsetHeight;
+        }
+      }
+      
+      // Fallback minimum
+      if (topOffset < 50) {
+        topOffset = 120;
+      }
+      
+      return topOffset;
+    }
+
+    // Update menu position
+    function updateMenuPosition() {
+      const topOffset = calculateMenuTopOffset();
+      mobileMenu.style.setProperty('--mobile-menu-top-offset', topOffset + 'px');
+      mobileMenu.style.paddingTop = topOffset + 'px';
+    }
 
     mobileMenuToggle.addEventListener('click', function(e) {
       e.preventDefault();
@@ -1419,6 +1045,9 @@
     }
 
     function openMobileMenu() {
+      // Update menu position before opening
+      updateMenuPosition();
+      
       scrollPosition = window.pageYOffset;
       mobileMenu.classList.add('active');
       if (mobileMenuOverlay) mobileMenuOverlay.classList.add('active');
@@ -1426,9 +1055,6 @@
       mobileMenuToggle.setAttribute('aria-label', 'Close menu');
       body.classList.add('mobile-menu-open');
       body.style.top = `-${scrollPosition}px`;
-      
-      // Ensure announcement bar stays on top when menu opens
-      ensureAnnouncementBarVisible();
     }
 
     function closeMobileMenu() {
@@ -1450,26 +1076,6 @@
       if (menuContent) {
         menuContent.scrollTop = 0;
       }
-    }
-    
-    function ensureAnnouncementBarVisible() {
-      const announcementSelectors = [
-        '#announcement', 
-        '.announcement__wrapper', 
-        '.announcement__bar-outer', 
-        '.announcement__bar',
-        '.shopify-section-announcement-bar',
-        '[data-section-type="announcement"]'
-      ];
-      
-      announcementSelectors.forEach(function(selector) {
-        const elements = document.querySelectorAll(selector);
-        elements.forEach(function(el) {
-          el.style.setProperty('position', 'relative', 'important');
-          el.style.setProperty('z-index', '99999', 'important');
-          el.style.setProperty('pointer-events', 'auto', 'important');
-        });
-      });
     }
 
     const linkContainers = mobileMenu.querySelectorAll('.link-container');
@@ -1517,7 +1123,17 @@
         if (window.innerWidth >= 990 && mobileMenu.classList.contains('active')) {
           closeMobileMenu();
         }
+        // Update menu position on resize
+        updateMenuPosition();
       }, 250);
+    });
+
+    // Initial position calculation
+    updateMenuPosition();
+    
+    // Recalculate after fonts and images load
+    window.addEventListener('load', function() {
+      updateMenuPosition();
     });
   });
 </script>
