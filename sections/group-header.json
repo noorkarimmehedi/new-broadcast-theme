@@ -17,7 +17,6 @@
     },
     "announcment_KqqnWj": {
       "type": "announcment",
-      "disabled": true,
       "name": "Announcement Bar - V2",
       "settings": {
         "announcement": true,
