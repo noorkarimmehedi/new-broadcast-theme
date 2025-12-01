@@ -558,14 +558,37 @@
 
 <style>
   /* =====================================================
+     ANNOUNCEMENT BAR - HIGHEST PRIORITY Z-INDEX
+     ===================================================== */
+  
+  /* Announcement bar must be above everything except modals */
+  .shopify-section-group-group-header .announcement__wrapper,
+  .shopify-section-group-group-header .announcement__bar-outer,
+  .shopify-section-group-group-header #announcement,
+  .shopify-section-group-group-header .announcement__bar,
+  .announcement__wrapper,
+  .announcement__bar-outer,
+  #announcement,
+  .announcement__bar {
+    position: relative !important;
+    z-index: 99999 !important;
+  }
+  
+  /* Ensure announcement bar section wrapper has proper z-index */
+  .shopify-section-announcement-bar,
+  [data-section-type="announcement"] {
+    position: relative !important;
+    z-index: 99999 !important;
+  }
+
+  /* =====================================================
      FIX HEADER WHITE SPACE - TARGET INTERNAL ELEMENTS
      ===================================================== */
   
-  /* CRITICAL: Override theme.css - must come after theme.css loads */
   .header__wrapper,
   .header__wrapper.header__wrapper {
     position: relative !important;
-    z-index: 2300 !important;
+    z-index: 9999 !important;
     height: fit-content !important;
     min-height: fit-content !important;
     max-height: none !important;
@@ -582,27 +605,24 @@
   @media only screen and (max-width: 989px) {
     .drawer--cart,
     .drawer--cart .drawer__inner {
-      z-index: 7000 !important;
+      z-index: 100001 !important;
     }
     
     .drawer--cart .drawer__underlay {
-      z-index: 6999 !important;
+      z-index: 100000 !important;
     }
   }
   
-  /* Ensure header wrapper only takes space of its content */
   .header__wrapper > * {
     line-height: normal;
   }
   
-  /* Remove any spacing from data attributes */
   [data-header-height],
   [data-header-wrapper] {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
   
-  /* Reset theme header - CRITICAL FIX - Override absolute positioning */
   .header__wrapper .theme__header,
   .header__wrapper .theme__header.theme__header,
   .theme__header[data-header-height] {
@@ -617,10 +637,9 @@
     margin-top: 0 !important;
     line-height: normal !important;
     width: 100% !important;
-    z-index: 2300 !important;
+    z-index: 9999 !important;
   }
   
-  /* CRITICAL: Remove any pseudo-elements that might add space */
   .header__wrapper .theme__header::before,
   .header__wrapper .theme__header::after {
     display: none !important;
@@ -637,7 +656,6 @@
     bottom: auto !important;
   }
   
-  /* Fix header desktop upper and lower rows */
   .header__wrapper .header__desktop__upper,
   .header__wrapper .header__desktop__lower {
     padding-bottom: 0 !important;
@@ -646,7 +664,6 @@
     min-height: 0 !important;
   }
   
-  /* Fix header desktop bars */
   .header__wrapper .header__desktop__bar__l,
   .header__wrapper .header__desktop__bar__c,
   .header__wrapper .header__desktop__bar__r {
@@ -654,7 +671,6 @@
     margin-bottom: 0 !important;
   }
   
-  /* Fix mobile header */
   .header__wrapper .header__mobile {
     height: auto !important;
     min-height: 0 !important;
@@ -662,7 +678,6 @@
     margin-bottom: 0 !important;
   }
   
-  /* Fix desktop header */
   .header__wrapper .header__desktop {
     height: auto !important;
     min-height: 0 !important;
@@ -670,7 +685,6 @@
     margin-bottom: 0 !important;
   }
   
-  /* Fix desktop upper row */
   .header__wrapper .header__desktop__upper {
     height: auto !important;
     min-height: 0 !important;
@@ -678,7 +692,6 @@
     margin-bottom: 0 !important;
   }
   
-  /* Fix desktop lower row */
   .header__wrapper .header__desktop__lower {
     height: auto !important;
     min-height: 0 !important;
@@ -686,7 +699,6 @@
     margin-bottom: 0 !important;
   }
   
-  /* CRITICAL: Hide hover__bg which creates the white space */
   .header__wrapper .hover__bg {
     display: none !important;
     height: 0 !important;
@@ -702,7 +714,6 @@
     bottom: auto !important;
   }
   
-  /* Ensure hover__bg doesn't create any space */
   .header__wrapper .header__menu .hover__bg {
     position: absolute !important;
     top: 0 !important;
@@ -713,7 +724,6 @@
     width: 0 !important;
   }
   
-  /* Fix header menu */
   .header__wrapper .header__menu {
     height: auto !important;
     min-height: 0 !important;
@@ -722,7 +732,6 @@
     position: relative !important;
   }
   
-  /* Fix hover bar */
   .header__wrapper .hover__bar {
     position: absolute !important;
     bottom: 0 !important;
@@ -730,13 +739,11 @@
     min-height: 0 !important;
   }
   
-  /* Fix any nav-item dropdowns that might add height */
   .header__wrapper .navlink--has-dropdown::after,
   .header__wrapper .header__dropdown {
     position: absolute !important;
   }
   
-  /* Fix page header wrapper */
   .page-header,
   .shopify-section.page-header,
   .shopify-section-group-group-header {
@@ -748,7 +755,6 @@
     padding-top: 0 !important;
   }
   
-  /* Fix header sections container */
   .header-sections .page-header,
   .header-sections .shopify-section {
     margin-bottom: 0 !important;
@@ -757,13 +763,11 @@
     padding-top: 0 !important;
   }
   
-  /* Remove any spacing from header sections */
   .header-sections {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
   
-  /* CRITICAL: Remove section-padding from all header sections */
   .header-sections .section-padding,
   .header-sections [class*="section-padding"],
   .header-sections .announcement__wrapper.section-padding {
@@ -771,7 +775,6 @@
     margin-bottom: 0 !important;
   }
   
-  /* Remove padding from announcement bar in header */
   .header-sections .announcement__wrapper,
   .header-sections .announcement__bar-outer,
   .header-sections #announcement {
@@ -779,7 +782,6 @@
     padding-bottom: 0 !important;
   }
   
-  /* Ensure no spacing between header and content */
   .header-sections + *,
   .header__wrapper + *,
   .header__backfill + * {
@@ -787,7 +789,6 @@
     padding-top: 0 !important;
   }
   
-  /* Remove any bottom spacing from header group */
   .header-sections:last-child,
   .header__wrapper:last-child,
   .header__backfill:last-child {
@@ -795,14 +796,11 @@
     padding-bottom: 0 !important;
   }
   
-  /* Ensure container doesn't add space */
   .container > .header-sections {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
   
-  /* Fix header backfill - CRITICAL */
-  /* Since header is now relative, backfill should be hidden or have zero height */
   .header__backfill,
   .header__backfill[data-header-backfill] {
     margin: 0 !important;
@@ -820,7 +818,6 @@
     opacity: 0 !important;
   }
   
-  /* Ensure backfill doesn't add extra space below header */
   .header__wrapper ~ .header__backfill {
     display: none !important;
     height: 0 !important;
@@ -828,7 +825,6 @@
     padding: 0 !important;
   }
   
-  /* Ensure backfill doesn't create extra space */
   .header__backfill::before,
   .header__backfill::after {
     display: none !important;
@@ -838,7 +834,6 @@
     content: none !important;
   }
   
-  /* If header is relative, backfill should be completely hidden */
   .header__wrapper + .header__backfill {
     display: none !important;
     height: 0 !important;
@@ -846,7 +841,6 @@
     padding: 0 !important;
   }
   
-  /* Fix all header child elements */
   .header__wrapper > *,
   .header__wrapper .theme__header > *,
   .header__wrapper .header__mobile > *,
@@ -863,12 +857,10 @@
     padding-bottom: 0 !important;
   }
   
-  /* Fix all nested elements */
   .header__wrapper * {
     box-sizing: border-box;
   }
   
-  /* Remove any line-height that might add space - but allow content to have normal line-height */
   .header__wrapper {
     line-height: 0 !important;
     font-size: 0 !important;
@@ -884,13 +876,11 @@
     font-size: initial !important;
   }
   
-  /* Fix header sections wrapper */
   .header-sections {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
   
-  /* CRITICAL FIX: Override section-padding for all sections in header group */
   .header-sections section,
   .header-sections [data-section-type],
   .header-sections .section-padding,
@@ -901,7 +891,6 @@
     --PB: 0 !important;
   }
   
-  /* Remove padding from announcement specifically */
   .header-sections .announcement__wrapper,
   .header-sections .announcement__wrapper.section-padding,
   .header-sections #announcement {
@@ -915,7 +904,6 @@
     --PB: 0 !important;
   }
   
-  /* Remove padding from all announcement child elements */
   .header-sections .announcement__bar-outer,
   .header-sections .announcement__bar,
   .header-sections .announcement__bar-holder {
@@ -923,7 +911,6 @@
     padding-bottom: 0 !important;
   }
   
-  /* Ensure no extra spacing after header */
   .header__wrapper::after,
   .header__wrapper::before {
     content: none !important;
@@ -933,13 +920,11 @@
     padding: 0 !important;
   }
   
-  /* Fix container spacing */
   .container .header-sections {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
   
-  /* Ensure header sections don't add space */
   .header-sections::after {
     content: none !important;
     display: none !important;
@@ -960,21 +945,21 @@
   
   #mobile-menu.mobile-menu-drawer {
     position: fixed;
-    top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px)));
+    top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
-    height: calc(100dvh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
+    height: 100vh;
+    height: 100dvh;
     background: var(--COLOR-BG);
-    border-top: 1px solid var(--COLOR-BORDER);
     opacity: 0;
     visibility: hidden;
-    z-index: 500;
+    z-index: 9998 !important;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     transform: translateY(-20px);
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    padding-top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px)));
   }
 
   #mobile-menu.mobile-menu-drawer.active {
@@ -1204,65 +1189,20 @@
     text-decoration: none;
   }
 
-  /* Overlay - Start below header and announcement bar */
+  /* Overlay - Full screen but below announcement bar and header */
   .mobile-menu-overlay {
     position: fixed;
-    top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px)));
+    top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
-    height: calc(100dvh - var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))));
+    height: 100vh;
+    height: 100dvh;
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
-    z-index: 499;
+    z-index: 9997 !important;
     pointer-events: none;
-  }
-  
-  /* Ensure overlay doesn't affect announcement bar */
-  .mobile-menu-overlay.active {
-    z-index: 499 !important;
-    pointer-events: auto;
-  }
-  
-  /* Prevent mobile menu drawer from affecting announcement bar - drawer should be below header */
-  #mobile-menu.mobile-menu-drawer {
-    z-index: 500 !important;
-    top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))) !important;
-  }
-  
-  /* Ensure announcement bar stays above mobile menu overlay and maintains its color */
-  .announcement__wrapper,
-  .announcement__bar-outer,
-  #announcement,
-  .announcement__bar {
-    position: relative !important;
-    z-index: 10002 !important;
-    background-color: inherit !important;
-  }
-  
-  /* When mobile menu is open, ensure announcement bar keeps its background color */
-  body.mobile-menu-open .announcement__wrapper,
-  body.mobile-menu-open .announcement__bar-outer,
-  body.mobile-menu-open #announcement,
-  body.mobile-menu-open .announcement__bar {
-    background-color: inherit !important;
-    z-index: 10002 !important;
-    position: relative !important;
-  }
-  
-  /* Ensure header wrapper stays above mobile menu drawer */
-  .header__wrapper,
-  .theme__header {
-    z-index: 10000 !important;
-    position: relative !important;
-  }
-  
-  /* Ensure mobile menu overlay starts below entire header */
-  .mobile-menu-overlay {
-    top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))) !important;
-    z-index: 499 !important;
   }
 
   .mobile-menu-overlay.active {
@@ -1315,11 +1255,32 @@
     width: 100%;
     height: 100%;
   }
+  
+  /* When mobile menu is open, ensure announcement bar stays visible and clickable */
+  body.mobile-menu-open .shopify-section-group-group-header,
+  body.mobile-menu-open .announcement__wrapper,
+  body.mobile-menu-open .announcement__bar-outer,
+  body.mobile-menu-open #announcement,
+  body.mobile-menu-open .announcement__bar,
+  body.mobile-menu-open .shopify-section-announcement-bar,
+  body.mobile-menu-open [data-section-type="announcement"] {
+    position: relative !important;
+    z-index: 99999 !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Ensure header stays above mobile menu */
+  body.mobile-menu-open .header__wrapper,
+  body.mobile-menu-open .theme__header {
+    position: relative !important;
+    z-index: 99998 !important;
+    pointer-events: auto !important;
+  }
 
   /* Ensure mobile menu drawer doesn't affect header spacing */
   #mobile-menu.mobile-menu-drawer {
     margin-top: 0 !important;
-    padding-top: 0 !important;
+    padding-top: var(--header-height, calc(var(--menu-height) + var(--announcement-height, 0px))) !important;
   }
   
   /* Hide on desktop */
@@ -1344,6 +1305,7 @@
         headerWrapper.style.setProperty('padding-bottom', '0', 'important');
         headerWrapper.style.setProperty('height', 'fit-content', 'important');
         headerWrapper.style.setProperty('min-height', 'fit-content', 'important');
+        headerWrapper.style.setProperty('z-index', '9999', 'important');
       }
       
       if (themeHeader) {
@@ -1352,6 +1314,7 @@
         themeHeader.style.setProperty('padding-bottom', '0', 'important');
         themeHeader.style.setProperty('height', 'auto', 'important');
         themeHeader.style.setProperty('min-height', '0', 'important');
+        themeHeader.style.setProperty('z-index', '9999', 'important');
       }
       
       if (headerBackfill) {
@@ -1383,20 +1346,24 @@
         shopifySection.style.setProperty('padding-top', '0', 'important');
       }
       
-      // Preserve announcement bar background color and ensure proper z-index
-      const announcementSelectors = ['#announcement', '.announcement__wrapper', '.announcement__bar-outer', '.announcement__bar'];
+      // CRITICAL: Ensure announcement bar has highest z-index and is fully visible
+      const announcementSelectors = [
+        '#announcement', 
+        '.announcement__wrapper', 
+        '.announcement__bar-outer', 
+        '.announcement__bar',
+        '.shopify-section-announcement-bar',
+        '[data-section-type="announcement"]'
+      ];
+      
       announcementSelectors.forEach(function(selector) {
         const announcementElements = document.querySelectorAll(selector);
         announcementElements.forEach(function(el) {
-          const computedBg = window.getComputedStyle(el).backgroundColor;
-          if (computedBg && computedBg !== 'rgba(0, 0, 0, 0)' && computedBg !== 'transparent') {
-            if (!el.hasAttribute('data-original-bg')) {
-              el.setAttribute('data-original-bg', computedBg);
-            }
-            el.style.setProperty('background-color', computedBg, 'important');
-            el.style.setProperty('z-index', '10002', 'important');
-            el.style.setProperty('position', 'relative', 'important');
-          }
+          el.style.setProperty('position', 'relative', 'important');
+          el.style.setProperty('z-index', '99999', 'important');
+          el.style.setProperty('pointer-events', 'auto', 'important');
+          el.style.setProperty('visibility', 'visible', 'important');
+          el.style.setProperty('opacity', '1', 'important');
         });
       });
     }
@@ -1416,6 +1383,7 @@
     
     // Run after a short delay to ensure all CSS has loaded
     setTimeout(fixHeaderSpacing, 100);
+    setTimeout(fixHeaderSpacing, 500);
   })();
 </script>
 
@@ -1459,25 +1427,8 @@
       body.classList.add('mobile-menu-open');
       body.style.top = `-${scrollPosition}px`;
       
-      // Preserve announcement bar background color when menu opens
-      const announcementSelectors = ['#announcement', '.announcement__wrapper', '.announcement__bar-outer', '.announcement__bar'];
-      announcementSelectors.forEach(function(selector) {
-        const announcementElements = document.querySelectorAll(selector);
-        announcementElements.forEach(function(el) {
-          if (!el.hasAttribute('data-original-bg')) {
-            const computedBg = window.getComputedStyle(el).backgroundColor;
-            if (computedBg && computedBg !== 'rgba(0, 0, 0, 0)' && computedBg !== 'transparent') {
-              el.setAttribute('data-original-bg', computedBg);
-            }
-          }
-          const originalBg = el.getAttribute('data-original-bg') || window.getComputedStyle(el).backgroundColor;
-          if (originalBg && originalBg !== 'rgba(0, 0, 0, 0)' && originalBg !== 'transparent') {
-            el.style.setProperty('background-color', originalBg, 'important');
-            el.style.setProperty('z-index', '10002', 'important');
-            el.style.setProperty('position', 'relative', 'important');
-          }
-        });
-      });
+      // Ensure announcement bar stays on top when menu opens
+      ensureAnnouncementBarVisible();
     }
 
     function closeMobileMenu() {
@@ -1499,6 +1450,26 @@
       if (menuContent) {
         menuContent.scrollTop = 0;
       }
+    }
+    
+    function ensureAnnouncementBarVisible() {
+      const announcementSelectors = [
+        '#announcement', 
+        '.announcement__wrapper', 
+        '.announcement__bar-outer', 
+        '.announcement__bar',
+        '.shopify-section-announcement-bar',
+        '[data-section-type="announcement"]'
+      ];
+      
+      announcementSelectors.forEach(function(selector) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(function(el) {
+          el.style.setProperty('position', 'relative', 'important');
+          el.style.setProperty('z-index', '99999', 'important');
+          el.style.setProperty('pointer-events', 'auto', 'important');
+        });
+      });
     }
 
     const linkContainers = mobileMenu.querySelectorAll('.link-container');
